@@ -1,0 +1,32 @@
+repos:
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.11.13
+  hooks:
+    - id: ruff-check
+      args: ["--fix"]
+      stages: [pre-push]
+
+    - id: ruff-format
+      stages: [pre-push]
+            
+- repo: https://github.com/psf/black
+  rev: 25.1.0  
+  hooks:
+    - id: black
+      stages: [pre-push]
+
+- repo: local
+  hooks:
+    - id: commit-msg-check
+      name: Verifica padrão da mensagem de commit
+      language: system
+      entry: python validar_mensagem_commit.py
+      stages: [commit-msg]
+      pass_filenames: true    
+      
+    - id: git-add
+      name: Adiciona arquivos corrigidos
+      language: system
+      entry: cmd /c git add
+      pass_filenames: true
+      stages: [pre-push]

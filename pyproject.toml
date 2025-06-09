@@ -1,0 +1,24 @@
+[tool.isort]
+split-on-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["I", "PL", "PT", "E", "F", "W", "C"]
+
+[tool.ruff.lint.isort]
+from-first = true
+length-sort = true
+no-sections = true
+
+[tool.ruff.lint.pylint]
+max-args = 1
+
+[tool.ruff.analyze]
+preview = true
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+preview = true
+
+[tool.black]
+skip-string-normalization = true
